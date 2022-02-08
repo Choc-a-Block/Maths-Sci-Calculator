@@ -1,0 +1,4 @@
+eqsolve
+basicmath
+algebra
+calculus
