@@ -1,4 +1,12 @@
 eqsolve
-basicmath
-algebra
-calculus
+basicmaths
+const
+average
+integrate
+differentiate
+quadraticformula
+pythagoras
+
+
+Find|More|Below:
+https://github.com/Choc-a-Block/MathsSciCalculator/wiki#currently-supported-commands
