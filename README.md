@@ -108,22 +108,3 @@ Binomial naming system
 
 Every animal genome tree / species tree
 
-
-
-
-
-How on earth we are gonna do it?
-Making use of:
-SciPy
-NumPy
-Pandas
-SymPy
-
-Websites:
-https://pythoninchemistry.org/pylj
-https://problemsolvingwithpython.com/
-https://numpy.org/
-https://scipy.org/
-https://pandas.pydata.org/
-https://www.sympy.org/en/index.html
-
