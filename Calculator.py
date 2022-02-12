@@ -9,7 +9,7 @@ import basic_maths
 from basic_commands import avg
 from FormulaeSolver import Eqsolve
 from art import tprint as tp
-from database import get_commands, get_constants, get_eqf
+from database import get_contents, get_constants, get_eqf, get_currencies
 import basic_maths as bm
 import memory as mem
 import calculus
@@ -35,13 +35,15 @@ while not exit_cli:
     # ---------- EVALUATE COMMAND ---------- #
     if command == "help":
         print("Here is a list of commands: ")
-        get_commands()
+        get_contents("commands.txt")
     elif command == "eqsolve":
         print(Eqsolve.__doc__)  # Prints docstring as a "how-to"
         eqf = get_eqf(input("Please enter equation name: ").lower())
         print(Eqsolve(eqf[0], eqf[1], eqf[2], eqf[3], eqf[4], eqf[5], eqf[6]))
     elif command == "basicmath" or command == "basicmaths":
-        bm.basic_maths()
+        basic_maths_ans = bm.basic_maths()
+        print(basic_maths_ans)
+        mem.ask_commit(basic_maths_ans)
     elif command == "const" or command == "constant" or command == "constants":
         const_request = input("Please enter the constant name you would like to know the value of: ")
         print(get_constants(const_request.lower()))
@@ -64,19 +66,25 @@ while not exit_cli:
         integrated = calculus.integrate_eq(calculus.f("Integrate"))
         print(integrated)
         mem.ask_commit(integrated)
-    elif command == "diff" or command == "differentiate_eq":
-        print(calculus.f.__doc__)
-        differentiated = calculus.differentiate_eq(calculus.f("Differentiate"))
-        print(differentiated)
+        """
         solve = input("Would you like to solve for area under the graph? (T/F or Y/N)")
         if solve == "y" or solve == "yes" or solve == "true" or solve == "t":
             ub = basic_commands.get_number_inputS("Please enter the maximum x value of your area: ")
             lb = basic_commands.get_number_inputS("Please enter the minimum x value of your area (same quadrant): ")
             dif_upper = differentiated.sy.subs("x", ub)
+        """
+    elif command == "diff" or "differentiate" in command:
+        print(calculus.f.__doc__)
+        differentiated = calculus.differentiate_eq(calculus.f("Differentiate"))
+        print(differentiated)
         mem.ask_commit(differentiated)
     elif command == "currency" or command == "curr":
+        print(basic_commands.currency_convert.__doc__)
+        get_curr_types = input("Would you like to get a list of currencies we currently support? T/F or Y/N: ").lower()
+        if get_curr_types == "y" or get_curr_types == "t" or get_curr_types == "yes" or get_curr_types == "true":
+            get_contents("supported_currencies.txt")
         cur_val = basic_commands.currency_convert(basic_commands.get_number_inputS("Please enter Currency value: "),
-                                                  input("Please enter that currency's type (GBP, EUR, USD): "),
+                                                  input("Please enter that currency's type (GBP, EUR, USD): ").upper(),
                                                   out_cur_type := input(
                                                       "Please enter output currency type (GBP, EUR, USD etc): ").upper())
         try:
@@ -123,5 +131,8 @@ while not exit_cli:
             outval = basic_commands.num_type_convert(value, "pretty")
         print(f"The output value is: {outval}")
         mem.ask_commit(outval)
+    elif command == "currency_hist" or "_hist" in command:
+        print(get_currencies.__doc__)
+        curr_hist = get_currencies("CurrencyValues_new.csv")
 
 # ---------- END EVALUATE COMMAND ---------- #

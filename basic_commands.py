@@ -95,8 +95,11 @@ def num_type_convert(value, format_V):
 
 
 def currency_convert(value, value_curr, target_curr):
+    """Welcome to Currency Converter: This program uses live currencies to convert your value to any supported currency. Enter your value, its currency and the wanted output currency below: """
     c = CurrencyConverter()
+    
     try:
         return c.convert(value, value_curr, target_curr)
     except ValueError or TypeError:
         return f"Sorry, but we currently do not support either {value_curr} or {target_curr}, please try again"
+

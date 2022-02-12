@@ -6,7 +6,8 @@ integrate
 differentiate
 quadraticformula
 pythagoras
-
+currency
+currency_hist
 
 Find|More|Below:
 https://github.com/Choc-a-Block/MathsSciCalculator/wiki#currently-supported-commands

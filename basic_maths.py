@@ -8,12 +8,11 @@ def basic_maths():
     while not c:
         try:
             ans = eval(input("Please enter basic maths calculation with numbers, operators and brackets ONLY: "))
-            print(ans)
-            mem.ask_commit(ans)
             c = True
         except:
             print(
                 "That was not in the format requested, Please only use basic operators '*, /, -, +' and integers or floats")
+    return ans
 
 
 def quad_formula():
