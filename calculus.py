@@ -1,8 +1,4 @@
-#  from click._compat import raw_input
 from sympy import *
-
-
-#  from scitools.StringFunction import StringFunction
 
 
 def differentiate_eq(equation):
@@ -23,4 +19,3 @@ def integrate_eq(eq):
 if __name__ == '__main__':
     # print(integrate_eq(f("Integrate")))
     print(differentiate_eq(f("Differentiate")))
-

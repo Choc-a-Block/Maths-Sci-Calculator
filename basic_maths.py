@@ -1,6 +1,6 @@
-from basic_commands import get_number_inputL, get_number_inputS
-import memory as mem
 from math import sqrt
+
+from basic_commands import get_number_inputL, get_number_inputS
 
 
 def basic_maths():

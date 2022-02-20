@@ -1,4 +1,5 @@
 from statistics import median, mean, mode
+
 from currency_converter import CurrencyConverter
 
 
@@ -76,7 +77,7 @@ def avg(avg_type):  # Takes in Average Type as Str of "mean", "median", "mode", 
 
 
 def num_type_convert(value, format_V):
-    """Welcome to Number Converter: Enter a value, and its format. Enter your output format and We will handle the rest. You can convert to scientific notation, Hexidecimal, Binary and back to Denary. You can also convert to 'pretty' format, separating big values with commas and rounding to 2dp."""
+    """Welcome to Number Converter: Enter a value, and its format. Enter your output format and We will handle the rest. You can convert to scientific notation, Hexadecimal, Binary and back to Deanery. You can also convert to 'pretty' format, separating big values with commas and rounding to 2dp."""
     return_val = 0
     if format_V == "sci":
         return_val = format(value, "10e")
@@ -84,13 +85,13 @@ def num_type_convert(value, format_V):
         if type(value) == int:
             return_val = format(value, ",")
         else:
-            return_val = format(value, ",.2f")
+            return_val = format(float(value), ",.2f")
     elif format_V == "bin-from-den":
         return_val = bin(int(value)).replace("00b", "").replace("0b", "")
     elif format_V == "hex-from-den":
         return_val = int(value, 16)
     elif format_V == "den-from-bin":
-        return_val = '{0:b}'.format(value)
+        return_val = '{0:b}'.format(int(value, 2))
     return str(return_val)
 
 
@@ -102,4 +103,3 @@ def currency_convert(value, value_curr, target_curr):
         return c.convert(value, value_curr, target_curr)
     except ValueError or TypeError:
         return f"Sorry, but we currently do not support either {value_curr} or {target_curr}, please try again"
-
