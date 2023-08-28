@@ -18,7 +18,9 @@ def div(x, y):
     return x / y
 
 
-def getnumberinputS(prompt):  # S for strict (does not allow any other input, only int or float)
+def getnumberinputS(
+    prompt,
+):  # S for strict (does not allow any other input, only int or float)
     while True:
         num = input(prompt)
         try:
@@ -32,7 +34,9 @@ def getnumberinputS(prompt):  # S for strict (does not allow any other input, on
                 print("Invalid input, please enter Float or Int")
 
 
-def getnumberinputL(prompt):  # L for lenient (allows anything else and returns "" if not int/float)
+def getnumberinputL(
+    prompt,
+):  # L for lenient (allows anything else and returns "" if not int/float)
     while True:
         num = input(prompt)
         try:
@@ -48,11 +52,15 @@ def getnumberinputL(prompt):  # L for lenient (allows anything else and returns 
 
 def Eqsolve(aName, bName, cName, aUnits, bUnits, cUnits, Eqf):
     """Welcome to Equation Solver, Please press enter on an unknown value to solve for it, enter the other two values in the requested format and it will handle the rest!"""
-    eqf = Eqf.split(".")  # split the three terms and the operator in eqf[0:2] and operator in eqf[3]
+    eqf = Eqf.split(
+        "."
+    )  # split the three terms and the operator in eqf[0:2] and operator in eqf[3]
     equation = f"{eqf[0]} = {eqf[1]} {eqf[3]} {eqf[2]}"  # eqf[3] is the operator when the formula has not been rearranged
     print(Eqsolve.__doc__)  # prints docstring as an intro on how to use
     print(f"{equation} is the formula being used ")
-    a = getnumberinputL(f"Please enter {aName} in {aUnits}: ")  # getting float or int input
+    a = getnumberinputL(
+        f"Please enter {aName} in {aUnits}: "
+    )  # getting float or int input
     if a == "":
         a = 0
     b = getnumberinputL(f"Please enter {bName} in {bUnits}: ")

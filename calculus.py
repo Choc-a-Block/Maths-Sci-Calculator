@@ -16,6 +16,6 @@ def integrate_eq(eq):
     return integrate(eq, symbols("x"))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # print(integrate_eq(f("Integrate")))
     print(differentiate_eq(f("Differentiate")))

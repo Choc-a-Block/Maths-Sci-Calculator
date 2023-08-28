@@ -5,7 +5,7 @@ def commit_to_mem(value):
         if len(data) > 0:  # if there is data in it
             file_object.write("\n")  # add newline
         file_object.write(str(value))  # write value & close
-        
+
 
 if __name__ == "__main__":
     commit_to_mem(4)
