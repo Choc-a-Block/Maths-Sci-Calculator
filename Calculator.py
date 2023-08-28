@@ -6,6 +6,7 @@ Welcome to the Python Maths, Physics and Chemistry Calculator
 from art import tprint as tp
 
 from FormulaeSolver import Eqsolve
+
 # ---------- IMPORTS ---------- #
 from basic_commands import num_type_convert, get_number_inputS, currency_convert, avg
 from basic_maths import basic_maths
@@ -30,7 +31,6 @@ print("")
 exit_cli = False
 
 while not exit_cli:
-
     print("Please enter command here (enter help to get list of commands)")
     command = input(">>").lower()
     # ---------- EVALUATE COMMAND ---------- #
@@ -47,10 +47,14 @@ while not exit_cli:
             print(basic_maths_ans)
             Session_Memory_Object.ask_commit(basic_maths_ans, "basicmaths")
         case "const":
-            const_request = input("Please enter the constant name you would like to know the value of: ")
+            const_request = input(
+                "Please enter the constant name you would like to know the value of: "
+            )
             print(get_constants(const_request.lower()))
         case "average" | "avg":
-            avg_type = input("Please enter Mean, Median, Mode, or Range as the type of average you would like: ").lower()
+            avg_type = input(
+                "Please enter Mean, Median, Mode, or Range as the type of average you would like: "
+            ).lower()
             match avg_type:
                 case "mean":
                     avg_val = avg("mean")
@@ -84,12 +88,23 @@ while not exit_cli:
             Session_Memory_Object.ask_commit(differentiated, "differentiate")
         case "currency" | "curr":
             print(currency_convert.__doc__)
-            get_curr_types = input("Would you like to get a list of currencies we currently support? T/F or Y/N: ").lower()
-            if get_curr_types == "y" or get_curr_types == "t" or get_curr_types == "yes" or get_curr_types == "true":
+            get_curr_types = input(
+                "Would you like to get a list of currencies we currently support? T/F or Y/N: "
+            ).lower()
+            if (
+                get_curr_types == "y"
+                or get_curr_types == "t"
+                or get_curr_types == "yes"
+                or get_curr_types == "true"
+            ):
                 get_contents("supported_currencies.txt")
-            cur_val = currency_convert(get_number_inputS("Please enter Currency value: "),
-                                       input("Please enter that currency's type (GBP, EUR, USD): ").upper(),
-                                       out_cur_type := input("Please enter output currency type (GBP, EUR, USD etc): ").upper())
+            cur_val = currency_convert(
+                get_number_inputS("Please enter Currency value: "),
+                input("Please enter that currency's type (GBP, EUR, USD): ").upper(),
+                out_cur_type := input(
+                    "Please enter output currency type (GBP, EUR, USD etc): "
+                ).upper(),
+            )
             try:
                 cur_val = round(cur_val, 4)
                 is_curr = True
@@ -123,15 +138,29 @@ while not exit_cli:
         case "valueconvert" | "convert" | "currency convert":
             print(num_type_convert.__doc__)
             value = input("Please enter the value: ")
-            value_type = input("Please enter the value type (decimal (or dec, int, den), hex, bin): ").lower()
-            out_value_type = input("Please enter the output value type (decimal (or int), hex, bin): ").lower()
-            if ("dec" in value_type or "int" in value_type or "den" in value_type) and "bin" in out_value_type:
+            value_type = input(
+                "Please enter the value type (decimal (or dec, int, den), hex, bin): "
+            ).lower()
+            out_value_type = input(
+                "Please enter the output value type (decimal (or int), hex, bin): "
+            ).lower()
+            if (
+                "dec" in value_type or "int" in value_type or "den" in value_type
+            ) and "bin" in out_value_type:
                 outval = num_type_convert(value, "bin-from-den")
-            elif "bin" in value_type and ("dec" in out_value_type or "int" in out_value_type or "den" in out_value_type):
+            elif "bin" in value_type and (
+                "dec" in out_value_type
+                or "int" in out_value_type
+                or "den" in out_value_type
+            ):
                 outval = num_type_convert(value, "den-from-bin")
-            elif ("dec" in value_type or "int" in value_type or "den" in value_type) and "sci" in out_value_type:
+            elif (
+                "dec" in value_type or "int" in value_type or "den" in value_type
+            ) and "sci" in out_value_type:
                 outval = num_type_convert(value, "sci")
-            elif ("dec" in value_type or "int" in value_type or "den" in value_type) and "pretty" in out_value_type:
+            elif (
+                "dec" in value_type or "int" in value_type or "den" in value_type
+            ) and "pretty" in out_value_type:
                 outval = num_type_convert(value, "pretty")
             print(f"The output value is: {outval}")
             Session_Memory_Object.ask_commit(outval, "currency_conversion")

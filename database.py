@@ -1,13 +1,19 @@
 from csv import reader
 import basic_commands as bc
 
+
 def geteqf(eqpointer):
-    with open('equations.csv', 'r') as read_obj:
-        csv_reader = reader(read_obj)  # pass the file object to reader() to get the reader object
-        list_of_rows = list(csv_reader)  # Pass reader object to list() to get a list of lists
+    with open("equations.csv", "r") as read_obj:
+        csv_reader = reader(
+            read_obj
+        )  # pass the file object to reader() to get the reader object
+        list_of_rows = list(
+            csv_reader
+        )  # Pass reader object to list() to get a list of lists
         for i in range(len(list_of_rows)):
             if eqpointer in list_of_rows[i]:
                 return list_of_rows[i]
+
 
 def getcommands():
     raw_commands = []
