@@ -34,6 +34,7 @@ def getnumberinputS(
                 print("Invalid input, please enter Float or Int")
 
 
+
 def getnumberinputL(
     prompt,
 ):  # L for lenient (allows anything else and returns "" if not int/float)
